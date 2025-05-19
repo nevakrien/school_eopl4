@@ -1,0 +1,32 @@
+א.
+let eq-or-neg = proc(x) proc(y)
+if zero?(-(x,y)) then zero?(0)
+else zero?( -(x, -(0,y)))
+
+ב.
+12 
+הפרוצדורה times4 באמת מכפילה ב4 כי
+-(y,-4)
+פשוט מוסיף 4 ואנחנו עושים רקורסיה עד ש n=0 
+
+ג.
+נשתמש ב ycombinator
+
+let mul-inner = proc(me) proc(x) proc(y) 
+if zero?(x) then 0
+else -( 
+(((me me) -(x,1)) y) , -(0,y)
+          )
+
+in let mul = (mul-inner mul-inner)
+
+in let factorial-inner = proc (me) proc(n)
+if zero?(n) then 1 
+else ((mul n) 
+((me me) -(n,1))
+) 
+in let factorial = (factorial-inner factorial-inner) 
+
+
+
+
